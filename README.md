@@ -1,5 +1,6 @@
-# AR-Environment-Skeleton
+# Bouncer-README
 
-You can use this repo to build new Activerecord projects
+The ELITE SQUAD App helps clubs recruit members with similar values.  approves a guest's membership based on their credentials, and then upgrades their ranking based on logged social events. 
 
-* You will need to create your own app/models directories
+
+Members can create an account with Elite Squad. They can then view all events available to them to attend.  clubhouse. After approval their clubhouse participation is tracked 

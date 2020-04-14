@@ -3,4 +3,4 @@ class Clubhouse < ActiveRecord::Base
     has_many :member, through: :records
 end
 
-#git updated
+#git new change

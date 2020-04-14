@@ -1,4 +1,4 @@
-# Bouncer-README
+# EliteSquad-README
 
 The ELITE SQUAD App helps clubs recruit members with similar values.  approves a guest's membership based on their credentials, and then upgrades their ranking based on logged social events. 
 

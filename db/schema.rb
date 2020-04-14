@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_192535) do
+ActiveRecord::Schema.define(version: 2020_04_14_210235) do
 
   create_table "clubhouses", force: :cascade do |t|
     t.string "name"
-    t.integer "tier"
+    t.string "tier"
   end
 
   create_table "members", force: :cascade do |t|
     t.string "name"
     t.integer "age"
-    t.integer "tier"
+    t.string "tier"
   end
 
   create_table "records", force: :cascade do |t|

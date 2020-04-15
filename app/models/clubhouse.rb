@@ -18,16 +18,15 @@ class Clubhouse < ActiveRecord::Base
             ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚══════╝     ╚═════╝╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝
                                                                                                             
             BRONZE
-        bronze_array = Record.all.select do |record|
-            record.tier == self
-
-            bronze_array.map do |display_bronze|
-                display_bronze.name
-            end 
+        bronze_club_array = Clubhouse.all.select do |clubhouse|
+            clubhouse.tier == "bronze"
 
         end
+        bronze_club_name_array = bronze_club_array.map do |display_clubhouse|
+         display_clubhouse.name
+         end 
+        puts bronze_club_name_array
     end
-        
 
 
     def self.display_silver
@@ -40,19 +39,24 @@ class Clubhouse < ActiveRecord::Base
         ╚════██║██║██║    ╚██╗ ██╔╝██╔══╝  ██╔══██╗    ██║     ██║     ██║   ██║██╔══██╗╚════██║
         ███████║██║███████╗╚████╔╝ ███████╗██║  ██║    ╚██████╗███████╗╚██████╔╝██████╔╝███████║
         ╚══════╝╚═╝╚══════╝ ╚═══╝  ╚══════╝╚═╝  ╚═╝     ╚═════╝╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝
-                                                                                                
+                                        
         SILVER
-        #Clubhouse.all.map 
-        Clubhouse.all.map .map do |clubhouse|
-            clubhouse.tier == @tier
+        silver_club_array = Clubhouse.all.select do |clubhouse|
+            clubhouse.tier == "silver"
 
-        end 
+        end
+        silver_club_name_array = silver_club_array.map do |display_clubhouse|
+         display_clubhouse.name
+         end 
+        puts silver_club_name_array
     end
 
     def self.display_gold
 
         puts <<-GOLD 
         here are the gold Clubs Available to you!"
+
+
         ██████╗  ██████╗ ██╗     ██████╗      ██████╗██╗     ██╗   ██╗██████╗ ███████╗
         ██╔════╝ ██╔═══██╗██║     ██╔══██╗    ██╔════╝██║     ██║   ██║██╔══██╗██╔════╝
         ██║  ███╗██║   ██║██║     ██║  ██║    ██║     ██║     ██║   ██║██████╔╝███████╗
@@ -61,30 +65,40 @@ class Clubhouse < ActiveRecord::Base
         ╚═════╝  ╚═════╝ ╚══════╝╚═════╝      ╚═════╝╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝
                                                                                     
             GOLD
-            Clubhouse.all.map do |clubhouse|
-            clubhouse.tier == @tier
-        end 
-    end
+            gold_club_array = Clubhouse.all.select do |clubhouse|
+                clubhouse.tier == "gold"
+    
+            end
+            gold_club_name_array = gold_club_array.map do |display_clubhouse|
+             display_clubhouse.name
+             end 
+            puts gold_club_name_array
+        end
 
 
     def self.clubhouse_member_options
+        #loop do
 
         puts "To look up Clubhouses available to you please enter your Membership tier"
         @tier = gets.chomp
         if    @tier == "bronze"
-            display_bronze
+            self.display_bronze
         elsif @tier == "silver"         
-            display_bronze
-            display_silver
+            self.display_bronze
+            
+            self.display_silver
 
         elsif @tier == "gold"
             puts "here are all the clubhouses you have access to!"
-            display_bronze
-            display_silver
+            self.display_bronze
+            self.display_silver
             puts "Plus these Premium Clubs"
-            display_gold
+            self.display_gold
+        else
+           # break
                 
         end
+ 
     end
-
+#end
 end

@@ -67,6 +67,13 @@ class Member < ActiveRecord::Base
     end
 
     def self.create_profile
+
+        name = Member.create_username
+        age = Member.get_user_age
+        user = self.create(name: name, age: age, tier: "bronze")
+    end
+
+    def self.create_username
         puts "Please create a username."
         loop do
             name = gets.chomp
@@ -77,9 +84,6 @@ class Member < ActiveRecord::Base
                 break
             end
         end
-        age = Member.get_user_age
-        user = self.create(name: name, age: age, tier: "bronze")
-        #
     end
 
     

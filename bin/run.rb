@@ -6,9 +6,12 @@ puts "Hi #{name}. Welcome to EliteSquad! Here you will find many different clubh
 
 def lookup_clubhouse
     puts "To look up Clubouses available to you please enter your Membership tier"
-    Clubhouse.all.map do |clubhouse|
-    clubhouse.tier == username.tier
+    if Clubhouse.all.map do |clubhouse|
+       clubhouse.tier == username.tier
+    
     puts "Here are the #{self.tier} Clubhouses available to you."
+
+
             
     end
 end
@@ -17,6 +20,7 @@ end
    
 
 def displays_all_clubhouses
-
+    Clubhouse.all.map do |clubhouse|
+        
 
 end

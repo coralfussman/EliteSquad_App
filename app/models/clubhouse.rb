@@ -20,11 +20,11 @@ def self.display_bronze
         BRONZE
        bronze_clubs = Clubhouse.all.select do |clubhouse|
           clubhouse.tier == @tier
-          clubhouse.name
+       
            end 
            puts bronze_clubs
         end
-
+ 
 
 
 

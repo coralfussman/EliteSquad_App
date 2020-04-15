@@ -35,6 +35,10 @@ class Member < ActiveRecord::Base
        (Member.find_by(id: $user_id)).name
     end
 
+    def self.get_id
+        $user_id
+    end
+
     def self.thank_you_exit
         puts <<-thanks
              ___________________________________________ 

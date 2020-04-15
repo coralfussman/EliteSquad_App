@@ -1,6 +1,89 @@
 class Clubhouse < ActiveRecord::Base
-    belongs_to :record
-    has_many :member, through: :record
+    belongs_to :records
+    has_many :member, through: :records
+
+
+
+
+
+def self.display_bronze
+    puts  <<-BRONZE
+        Here are the Bronze Clubs Available to you!
+
+        ██████╗ ██████╗  ██████╗ ███╗   ██╗███████╗███████╗     ██████╗██╗     ██╗   ██╗██████╗ ███████╗
+        ██╔══██╗██╔══██╗██╔═══██╗████╗  ██║╚══███╔╝██╔════╝    ██╔════╝██║     ██║   ██║██╔══██╗██╔════╝
+        ██████╔╝██████╔╝██║   ██║██╔██╗ ██║  ███╔╝ █████╗      ██║     ██║     ██║   ██║██████╔╝███████╗
+        ██╔══██╗██╔══██╗██║   ██║██║╚██╗██║ ███╔╝  ██╔══╝      ██║     ██║     ██║   ██║██╔══██╗╚════██║
+        ██████╔╝██║  ██║╚██████╔╝██║ ╚████║███████╗███████╗    ╚██████╗███████╗╚██████╔╝██████╔╝███████║
+        ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚══════╝     ╚═════╝╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝
+                                                                                                        
+        BRONZE
+       bronze_clubs = Clubhouse.all.select do |clubhouse|
+          clubhouse.tier == @tier
+       
+           end 
+           puts bronze_clubs
+        end
+ 
+
+
+
+
+def self.display_silver
+    puts <<-SILVER 
+    here are the Silver Clubs Available to you!"
+
+    ███████╗██╗██╗    ██╗   ██╗███████╗██████╗      ██████╗██╗     ██╗   ██╗██████╗ ███████╗
+    ██╔════╝██║██║    ██║   ██║██╔════╝██╔══██╗    ██╔════╝██║     ██║   ██║██╔══██╗██╔════╝
+    ███████╗██║██║    ██║   ██║█████╗  ██████╔╝    ██║     ██║     ██║   ██║██████╔╝███████╗
+    ╚════██║██║██║    ╚██╗ ██╔╝██╔══╝  ██╔══██╗    ██║     ██║     ██║   ██║██╔══██╗╚════██║
+    ███████║██║███████╗╚████╔╝ ███████╗██║  ██║    ╚██████╗███████╗╚██████╔╝██████╔╝███████║
+    ╚══════╝╚═╝╚══════╝ ╚═══╝  ╚══════╝╚═╝  ╚═╝     ╚═════╝╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝
+                                                                                            
+    SILVER
+    #Clubhouse.all.map 
+    Clubhouse.all.map .map do |clubhouse|
+        clubhouse.tier == @tier
+
+    end 
 end
 
-#git new change
+def self.display_gold
+
+    puts <<-GOLD 
+    here are the gold Clubs Available to you!"
+    ██████╗  ██████╗ ██╗     ██████╗      ██████╗██╗     ██╗   ██╗██████╗ ███████╗
+    ██╔════╝ ██╔═══██╗██║     ██╔══██╗    ██╔════╝██║     ██║   ██║██╔══██╗██╔════╝
+    ██║  ███╗██║   ██║██║     ██║  ██║    ██║     ██║     ██║   ██║██████╔╝███████╗
+    ██║   ██║██║   ██║██║     ██║  ██║    ██║     ██║     ██║   ██║██╔══██╗╚════██║
+    ╚██████╔╝╚██████╔╝███████╗██████╔╝    ╚██████╗███████╗╚██████╔╝██████╔╝███████║
+     ╚═════╝  ╚═════╝ ╚══════╝╚═════╝      ╚═════╝╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝
+                                                                                   
+        GOLD
+        Clubhouse.all.map .map do |clubhouse|
+        clubhouse.tier == @tier
+    end 
+end
+
+
+def self.clubhouse_member_options
+
+    puts "To look up Clubhouses available to you please enter your Membership tier"
+    @tier = gets.chomp
+    if    @tier == "bronze"
+        display_bronze
+    elsif @tier == "silver"         
+        display_bronze
+        display_silver
+
+    elsif @tier == "gold"
+        puts "here are all the clubhouses you have access to!"
+        display_bronze
+        display_silver
+        puts "Plus these Premium Clubs"
+        display_gold
+            
+    end
+end
+
+end

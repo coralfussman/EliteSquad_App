@@ -34,7 +34,7 @@ class Member < ActiveRecord::Base
        (Member.find_by(id: $user_id)).name
     end
 
-    def self.thank_you_exit
+    def thank_you_exit
         puts <<-thanks
              ___________________________________________ 
             |  Thank you for using the Elite Squad App. |
@@ -75,6 +75,7 @@ class Member < ActiveRecord::Base
             x.name 
         end
     end
+
     def self.create_username
         puts "Please create a username."
         loop do
@@ -92,9 +93,6 @@ class Member < ActiveRecord::Base
         name = Member.create_username
         age = Member.get_user_age
         Member.create(name: name, age: age, tier: "bronze")
-    end
-
-
-    
+    end 
 
 end

@@ -7,8 +7,8 @@ require_relative '../config/environment'
 
     
   
-# Clubhouse.clubhouse_member_options
 Member.greeting_menu
+Clubhouse.clubhouse_member_options
 
 
 

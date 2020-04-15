@@ -1,4 +1,6 @@
 class Member < ActiveRecord::Base
-    belongs_to :records
-    has_many :clubhouse, through: :records
+    belongs_to :record
+    has_many :clubhouse, through: :record
+
+
 end

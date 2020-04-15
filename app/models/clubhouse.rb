@@ -1,6 +1,6 @@
 class Clubhouse < ActiveRecord::Base
-    belongs_to :records
-    has_many :member, through: :records
+    belongs_to :record
+    has_many :member, through: :record
 end
 
 #git new change

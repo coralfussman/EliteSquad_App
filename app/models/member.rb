@@ -23,14 +23,15 @@ class Member < ActiveRecord::Base
                 Member.create_profile
                 break
             else
-                Member.find_by(name:user_input)
+                member = Member.find_by(name:user_input)
+                $user_id = member.id
                 break
             end
         end
     end
     
     def self.get_username
-        
+       (Member.find_by(id: $user_id)).name
     end
 
     def self.thank_you_exit
@@ -48,7 +49,7 @@ class Member < ActiveRecord::Base
         if input.downcase == "sign in"
             puts "Please enter your username."
             Member.check_username
-            puts "Welcome, #{self.name}."
+            puts "Welcome, #{Member.get_username}."
         elsif input.downcase == "create profile"
             Member.create_profile
         elsif input.downcase == "exit"
@@ -74,13 +75,6 @@ class Member < ActiveRecord::Base
             x.name 
         end
     end
-
-    def self.create_profile
-        name = Member.create_username
-        age = Member.get_user_age
-        user = Member.create(name: name, age: age, tier: "bronze")
-    end
-
     def self.create_username
         puts "Please create a username."
         loop do
@@ -93,6 +87,13 @@ class Member < ActiveRecord::Base
         end
         name
     end
+    
+    def self.create_profile
+        name = Member.create_username
+        age = Member.get_user_age
+        Member.create(name: name, age: age, tier: "bronze")
+    end
+
 
     
 

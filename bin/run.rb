@@ -7,5 +7,5 @@ puts "Hi #{name}. Welcome to EliteSquad! Here you will find many different clubh
 
     
   
-  clubhouse_member_options
+  Clubhouse.clubhouse_member_options
 

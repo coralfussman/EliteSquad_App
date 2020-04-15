@@ -1,6 +1,6 @@
 require_relative '../config/environment'
 
-Member.get_user_age
+Member.greeting_menu
 
 
 

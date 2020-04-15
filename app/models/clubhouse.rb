@@ -18,12 +18,12 @@ def self.display_bronze
         ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚══════╝     ╚═════╝╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝
                                                                                                         
         BRONZE
-       bronze_clubs = Clubhouse.all.select do |clubhouse|
-          clubhouse.tier == @tier
-       
-           end 
-           puts bronze_clubs
-        end
+        bronze_clubs = Clubhouse.all.select do |clubhouse|
+            clubhouse.tier == @tier
+        end 
+        
+    puts bronze_clubs
+end
  
 
 

@@ -16,12 +16,13 @@ class Member < ActiveRecord::Base
     def self.check_username
         loop do 
             user_input = gets.chomp
-            if !Member.find_by(name: user_input) && !user_input.downcase == 'create profile'
+            if !Member.find_by(name: user_input)
+                if user_input.downcase == 'create profile'
+                    Member.create_profile
+                    break
+                end
                 puts "Username not recognized. Please try again."
                 puts "Enter 'Create Profile' if you are trying to make a new profile. " 
-            elsif user_input.downcase == 'create profile'
-                Member.create_profile
-                break
             else
                 member = Member.find_by(name:user_input)
                 $user_id = member.id
@@ -34,7 +35,7 @@ class Member < ActiveRecord::Base
        (Member.find_by(id: $user_id)).name
     end
 
-    def thank_you_exit
+    def self.thank_you_exit
         puts <<-thanks
              ___________________________________________ 
             |  Thank you for using the Elite Squad App. |
@@ -78,14 +79,13 @@ class Member < ActiveRecord::Base
 
     def self.create_username
         puts "Please create a username."
-        loop do
+
             name = gets.chomp
-            if Member.get_all_usernames.include?(name)
+            until !Member.get_all_usernames.include?(name)
                 puts "This username is already taken."
                 puts "Please enter a different username."
+                name = gets.chomp
             end
-            break
-        end
         name
     end
     

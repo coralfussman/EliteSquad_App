@@ -79,6 +79,7 @@ class Member < ActiveRecord::Base
         end
         age = Member.get_user_age
         user = self.create(name: name, age: age, tier: "bronze")
+        #
     end
 
     

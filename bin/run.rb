@@ -8,7 +8,8 @@ require_relative '../config/environment'
     
   
 Member.greeting_menu
-Clubhouse.clubhouse_member_options
+Member.clubhouses_with_members_tier
+#Clubhouse.clubhouse_member_options
 
 
 

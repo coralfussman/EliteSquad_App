@@ -1,10 +1,22 @@
 require 'pry'
 class Member < ActiveRecord::Base
-
     belongs_to :record
-    has_many :clubhouse, through: :record
+    has_many :clubhouses, through: :record
 
-###################################SIGN IN/CREATE PROFILE FUNCTIONALITY#######################################
+###################################SIGN IN/CREATE PROFILE METHODS#######################################
+
+    def self.greeting_menu
+        Interface.greeting
+        input = gets.chomp
+        if input.downcase == "sign in"
+            Interface.sign_in_username_prompt
+        elsif input.downcase == "create profile"
+            Member.create_profile
+        elsif input.downcase == "exit"
+            Interface.thank_you_exit
+        end
+    end
+    
     def self.check_username
         loop do 
             user_input = gets.chomp
@@ -96,7 +108,6 @@ class Member < ActiveRecord::Base
     
     def self.create_username
         puts "Please create a username."
-        
         name = gets.chomp
         until !Member.get_all_usernames.include?(name)
             puts "This username is already taken."
@@ -112,8 +123,6 @@ class Member < ActiveRecord::Base
         member = Member.create(name: name, age: age, tier: "bronze")
         $user_id = member.id
     end 
-
-    
 
     def self.delete_profile
         loop do
@@ -133,7 +142,28 @@ class Member < ActiveRecord::Base
         end
     end
 
-##################################################################################################################
+########################################################################################################
+########################################USER DATA ACCESS METHODS########################################
 
+    def self.get_user_info
+        Member.find_by(id: $user_id)
+    end
+
+    def self.get_username
+        Member.get_user_info.name
+    end
+
+    def self.get_id
+        Member.get_user_info.id
+    end
+
+    def self.get_tier
+        Member.get_user_info.tier
+    end
+
+    def self.get_visit_count
+        Member.get_user_info.visits
+    end
+########################################################################################################
    
 end

@@ -1,4 +1,4 @@
 class Record < ActiveRecord::Base
-    has_many :clubhouse
-    has_many :member
+    has_many :clubhouses
+    has_many :members
 end

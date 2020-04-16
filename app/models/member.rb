@@ -1,18 +1,10 @@
 require 'pry'
 class Member < ActiveRecord::Base
+
     belongs_to :record
     has_many :clubhouse, through: :record
-    
-    def self.greeting
-        puts <<-Greeting
-        Welcome to the Elite Squad App.          
-        Would you like to sign in or create a new profile? 
-        ____________________________________________________
-        |    Sign in    |    Create Profile    |    Exit    |
-        |_______________|______________________|____________|
-        Greeting
-    end
 
+###################################SIGN IN/CREATE PROFILE FUNCTIONALITY#######################################
     def self.check_username
         loop do 
             user_input = gets.chomp
@@ -21,8 +13,7 @@ class Member < ActiveRecord::Base
                     Member.create_profile
                     break
                 end
-                puts "Username not recognized. Please try again."
-                puts "Enter 'Create Profile' if you are trying to make a new profile. " 
+            Interface.unrecognized_username
             else
                 member = Member.find_by(name:user_input)
                 $user_id = member.id
@@ -31,38 +22,39 @@ class Member < ActiveRecord::Base
         end
     end
     
+    def self.get_user_info
+        Member.find_by(id: $user_id)
+    end
+
     def self.get_username
-       (Member.find_by(id: $user_id)).name
+        Member.get_user_info.name
     end
 
     def self.get_id
-        $user_id
+        Member.get_user_info.id
     end
 
-    def self.thank_you_exit
-        puts <<-thanks
-             ___________________________________________ 
-            |  Thank you for using the Elite Squad App. |
-            |         We hope to see you soon!          |
-            |___________________________________________|
-        thanks
+    def self.get_tier
+        Member.get_user_info.tier
     end
+
+    def self.get_visit_count
+        Member.get_user_info.visits
+    end
+    
 
     def self.greeting_menu
-        Member.greeting
+        Interface.greeting
         input = gets.chomp
         if input.downcase == "sign in"
-            puts "Please enter your username."
-            Member.check_username
-            puts "Welcome, #{Member.get_username}."
+            Interface.sign_in_username_prompt
         elsif input.downcase == "create profile"
             Member.create_profile
         elsif input.downcase == "exit"
-            Member.thank_you_exit
+            Interface.thank_you_exit
         end
     end
-
-
+    
     def self.get_user_age
         puts "Please enter your age."
         @age = gets.chomp
@@ -70,33 +62,57 @@ class Member < ActiveRecord::Base
         if @age >= 21
             puts "Your account has been created."
         else
-            puts "You must be above 21 to use this app."
+            Interface.under_age
         end 
         @age
     end
-
-    def self.get_all_usernames
+    
+    def self.get_all_usernames 
         Member.all.map do |x|
             x.name 
         end
     end
-
+    
     def self.create_username
         puts "Please create a username."
-
+        
+        name = gets.chomp
+        until !Member.get_all_usernames.include?(name)
+            puts "This username is already taken."
+            puts "Please enter a different username."
             name = gets.chomp
-            until !Member.get_all_usernames.include?(name)
-                puts "This username is already taken."
-                puts "Please enter a different username."
-                name = gets.chomp
-            end
+        end
         name
     end
     
     def self.create_profile
         name = Member.create_username
         age = Member.get_user_age
-        Member.create(name: name, age: age, tier: "bronze")
+        member = Member.create(name: name, age: age, tier: "bronze")
+        $user_id = member.id
     end 
 
+    
+
+    def self.delete_profile
+        loop do
+            input = gets.chomp
+            if input.downcase == "DELETE"
+                obj = Member.get_user_info
+                obj.destroy
+                Interface.thank_you_exit
+                break
+            elsif input.downcase == "GO BACK"
+                #homepage method
+                break
+            else
+                puts "Unrecognized entry."
+                puts "Please enter 'DELETE' or 'GO BACK'."
+            end
+        end
+    end
+
+##################################################################################################################
+
+   
 end

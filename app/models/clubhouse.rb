@@ -17,14 +17,15 @@ class Clubhouse < ActiveRecord::Base
             ██████╔╝██║  ██║╚██████╔╝██║ ╚████║███████╗███████╗    ╚██████╗███████╗╚██████╔╝██████╔╝███████║
             ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚══════╝     ╚═════╝╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝
                                                                                                             
-            BRONZE
+        BRONZE
+        
         bronze_club_array = Clubhouse.all.select do |clubhouse|
             clubhouse.tier == "bronze"
-
         end
+
         bronze_club_name_array = bronze_club_array.map do |display_clubhouse|
-         display_clubhouse.name
-         end 
+        display_clubhouse.name
+        end 
         puts bronze_club_name_array
     end
 

@@ -65,8 +65,17 @@ class Interface < ActiveRecord::Base
         homepage
     end
 
-    
 
+ def self.sign_in_username_prompt
+        puts "                 Please enter your username."
+        Member.check_username
+    end
+
+    def choose_clubhouse_prompt
+        puts "                 Please choose a clubhouse."
+        getting_clubs_matching_members
+        check_clubhouse
+    end
 
 
     def self.delete_profile_prompt

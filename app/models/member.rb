@@ -64,7 +64,7 @@ class Member < ActiveRecord::Base
 
         end
     end
-    
+
     def self.get_user_age
         puts "                 Please enter your age."
         age = gets.chomp
@@ -173,7 +173,7 @@ class Member < ActiveRecord::Base
 
      #puts "here are all the clubhouses you have access to!"
     
-     def clubhouses_with_members_tier
+     def getting_clubs_matching_members
         Clubhouse.all.select do |c|
             # tiers 'gold' > 'silver' > 'bronze'
             if self.tier == 'gold'

@@ -12,7 +12,7 @@ Upon Running the app members will be prompted to choose whether or not they woul
         |_______________|______________________|____________|
    
 Once logged in you will be shown all the clubs available to your current tier.
-If you attend at least 10 events (limit 2 per day) you will level up! your tier and unlock more clubhouses.
+If you attend at least 10 events (limit 2 per day) you will level up! your tier and unlock more clubhouses with even greatre ammenities!
 
 
 

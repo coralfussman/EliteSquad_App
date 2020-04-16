@@ -20,6 +20,7 @@ class Member < ActiveRecord::Base
                     Interface.thank_you_exit
                 else
                     puts "Please enter a valid option."
+                    break
             end
         end
     end
@@ -129,7 +130,7 @@ class Member < ActiveRecord::Base
         loop do
             case input
                 when "choose clubhouses"
-                    Clubhouse.choose_clubhouse_prompt
+                    Interface.choose_clubhouse_prompt
                     break
                 when "view history"
                     puts "Placeholder for record of clubhouse visits"
@@ -145,7 +146,7 @@ class Member < ActiveRecord::Base
                     Interface.thank_you_exit
                 else
                     puts "Please enter a valid option."
-                
+                break
             end
         end
     end
@@ -175,32 +176,26 @@ class Member < ActiveRecord::Base
 ######################################################################################################## 
 ########################################USER CLUBHOUSE METHODS##########################################
 
-<<<<<<< HEAD
-     #puts "here are all the clubhouses you have access to!"
-    
-     def getting_clubs_matching_members
+     def self.getting_clubs_matching_members
         Clubhouse.all.select do |c|
             # tiers 'gold' > 'silver' > 'bronze'
-            if self.tier == 'gold'
+            if Member.set_user_info.tier == 'gold'
                 
                 c.tier == 'gold' || c.tier == 'silver' || c.tier == 'bronze'
-            # self.display_bronze
-            # self.display_silver
-            # puts "Plus these Premium Clubs"
-            # self.display_gold
 
-             elsif self.tier == 'silver'
+                member.getting_clubs_matching_members.all.each do |c|
+                    puts "#{c.name}-#{c.tier}"
+
+             elsif Member.set_user_info.tier == 'silver'
                 c.tier == 'silver' || c.tier == 'bronze'
-                # self.display_bronze
-                # self.display_silver
+            
             else
-                c.tier == self.tier
+                c.tier == Member.set_user_info.tier
             end
         end
     end
-=======
-    
->>>>>>> cbd5f72b07a8ddb4511c936e4575ecf9316ae018
 ########################################################################################################
 
 end
+
+

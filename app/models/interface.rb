@@ -21,6 +21,7 @@ class Interface < ActiveRecord::Base
         Member.check_username
     end
 
+
     def self.unrecognized_username
         puts <<-unrecognized
                 Username not recognized. Please try again.
@@ -71,12 +72,31 @@ class Interface < ActiveRecord::Base
         Member.check_username
     end
 
-    def choose_clubhouse_prompt
-        puts "                 Please choose a clubhouse."
-        getting_clubs_matching_members
-        check_clubhouse
+    def self.choose_clubhouse_prompt
+        Member.getting_clubs_matching_members
+        loop do 
+        user_club_choice = gets.chomp 
+            if user_club_choice.downcase == 'Choose Clubhouses' 
+        puts "here are all the clubhouses you have access to!"
+
+       
+
+        puts "                 Please enter the clubhouse you'd like to visit"
+        Clubhouse.check_clubhouse
+
+        puts "Great! You are checked in"
+            
+            else
+                puts "Sorry, invalid choice, please choose from the previous options"
+            end
+        end
     end
 
+
+
+
+   
+    
 
     def self.delete_profile_prompt
         puts <<-delete

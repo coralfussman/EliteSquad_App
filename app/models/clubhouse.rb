@@ -1,10 +1,6 @@
 class Clubhouse < ActiveRecord::Base
-    belongs_to :record
+    has_many :records
     has_many :members, through: :record
-
-
-
-
 
     def self.display_bronze
         puts  <<-BRONZE

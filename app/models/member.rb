@@ -1,19 +1,25 @@
 require 'pry'
 class Member < ActiveRecord::Base
-    belongs_to :record
-    has_many :clubhouses, through: :record
+    has_many :records
+    has_many :clubhouses, through: :records
 
 ###################################SIGN IN/CREATE PROFILE METHODS#######################################
 
     def self.greeting_menu
         Interface.greeting
-        input = gets.chomp
-        if input.downcase == "sign in"
-            Interface.sign_in_username_prompt
-        elsif input.downcase == "create profile"
-            Member.create_profile
-        elsif input.downcase == "exit"
-            Interface.thank_you_exit
+        loop do
+            input = gets.chomp
+            if input.downcase == "sign in"
+                Interface.sign_in_username_prompt
+                break
+            elsif input.downcase == "create profile"
+                Member.create_profile
+                break
+            elsif input.downcase == "exit"
+                Interface.thank_you_exit
+            else
+                puts "Please enter a valid option."
+            end
         end
     end
     
@@ -53,7 +59,7 @@ class Member < ActiveRecord::Base
     end
     
     def self.create_username
-        puts "Please create a username."
+        puts "Please enter a username."
         name = gets.chomp
         until !Member.get_all_usernames.include?(name)
             puts "This username is already taken."
@@ -71,15 +77,17 @@ class Member < ActiveRecord::Base
     end 
 
     def self.delete_profile
+        Interface.delete_profile_prompt
         loop do
-            input = gets.chomp
-            if input.downcase == "DELETE"
-                obj = Member.get_user_info
+            input = (gets.chomp).downcase
+            case input
+            when "delete"
+                obj = Member.set_user_info
                 obj.destroy
                 Interface.thank_you_exit
                 break
-            elsif input.downcase == "GO BACK"
-                #homepage method
+            when "go back"
+                Member.member_homepage
                 break
             else
                 puts "Unrecognized entry."
@@ -91,25 +99,47 @@ class Member < ActiveRecord::Base
 ########################################################################################################
 ########################################USER DATA ACCESS METHODS########################################
 
-    def self.get_user_info
+    def self.set_user_info 
         Member.find_by(id: $user_id)
     end
 
-    def self.get_username
-        Member.get_user_info.name
-    end
+    
+    
 
-    def self.get_id
-        Member.get_user_info.id
-    end
-
-    def self.get_tier
-        Member.get_user_info.tier
-    end
-
-    def self.get_visit_count
-        Member.get_user_info.visits
-    end
 ########################################################################################################
+########################################USER OPTIONS METHODS########################################
+
+    def self.change_username
+        Member.set_user_info.name = Member.create_username
+        Member.update({})
+        
+    end
+
+    def self.member_homepage
+        Interface.member_homepage_display
+        input = (gets.chomp).downcase
+        loop do
+            case input
+            when "clubhouses"
+                puts "Placeholder for clubhouses list"
+                break
+            when "view points"
+                puts "Placeholder for points"
+                break
+            when "change username"
+                Member.change_username
+                break
+            when "delete profile"
+                Member.delete_profile
+                break
+            when "exit"
+                Interface.thank_you_exit
+            else
+                puts "Please enter a valid option."
+            end
+        end
+    end
+
+        
    
 end

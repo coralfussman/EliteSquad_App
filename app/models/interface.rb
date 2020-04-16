@@ -1,3 +1,4 @@
+require 'pry'
 class Interface < ActiveRecord::Base
 
 
@@ -18,7 +19,7 @@ class Interface < ActiveRecord::Base
     def self.sign_in_username_prompt
         puts "                     Please enter your username."
         Member.check_username
-        puts "                   Welcome, #{Member.get_username}."
+        puts "                   Welcome, #{Member.set_user_info.name}."
     end
 
     def self.unrecognized_username
@@ -49,6 +50,19 @@ class Interface < ActiveRecord::Base
         exit
     end
 ############################################################################################################# 
+
+####################################MEMBER ACCESS/OPTIONS INTERFACE########################################## 
+
+    def self.member_homepage_display
+        puts <<-homepage
+                    This is a place holder.
+            Please type one of the following options.
+            You are currently : user_tier_placeholder.
+                  Clubhouses      View Points     
+            Change Username    Delete Profile   Exit     
+        homepage
+    end
+
     def self.delete_profile_prompt
         puts <<-delete
          _______________________________________________________________

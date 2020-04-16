@@ -58,8 +58,9 @@ class Interface < ActiveRecord::Base
                     This is a place holder.
             Please type one of the following options.
             You are currently : user_tier_placeholder.
-                  Clubhouses      View Points     
-            Change Username    Delete Profile   Exit     
+                Clubhouses         View Points     
+            Change Username      Delete Profile 
+                 Check In             Exit     
         homepage
     end
 

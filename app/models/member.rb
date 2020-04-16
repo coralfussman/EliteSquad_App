@@ -52,30 +52,8 @@ class Member < ActiveRecord::Base
             Interface.thank_you_exit
         end
     end
+  
 
-
-    #puts "here are all the clubhouses you have access to!"
-    
-    def clubhouses_with_members_tier
-        Clubhouse.all.select do |c|
-            # tiers 'gold' > 'silver' > 'bronze'
-            if self.tier == 'gold'
-                
-                c.tier == 'gold' || c.tier == 'silver' || c.tier == 'bronze'
-            # self.display_bronze
-            # self.display_silver
-            # puts "Plus these Premium Clubs"
-            # self.display_gold
-
-             elsif self.tier == 'silver'
-                c.tier == 'silver' || c.tier == 'bronze'
-                # self.display_bronze
-                # self.display_silver
-            else
-                c.tier == self.tier
-            end
-        end
-    end
 
     def self.get_user_age
         puts "Please enter your age."
@@ -83,6 +61,10 @@ class Member < ActiveRecord::Base
         age = age.to_i
         if age >= 21
             puts "Your account has been created."
+
+        end
+    end
+    
     def self.get_user_age
         puts "                 Please enter your age."
         age = gets.chomp
@@ -189,23 +171,25 @@ class Member < ActiveRecord::Base
 ######################################################################################################## 
 ########################################USER CLUBHOUSE METHODS##########################################
 
-    def self.clubhouses_with_members_tier
+     #puts "here are all the clubhouses you have access to!"
+    
+     def clubhouses_with_members_tier
         Clubhouse.all.select do |c|
             # tiers 'gold' > 'silver' > 'bronze'
-            if self.tier == 'Gold'
-                puts "Here are all the clubhouses you have access to!"
+            if self.tier == 'gold'
+                
+                c.tier == 'gold' || c.tier == 'silver' || c.tier == 'bronze'
             # self.display_bronze
             # self.display_silver
             # puts "Plus these Premium Clubs"
             # self.display_gold
 
-            elsif self.tier == 'Silver'
+             elsif self.tier == 'silver'
+                c.tier == 'silver' || c.tier == 'bronze'
                 # self.display_bronze
                 # self.display_silver
             else
-            
-            
-            c.tier == self.tier
+                c.tier == self.tier
             end
         end
     end

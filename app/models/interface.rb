@@ -65,6 +65,10 @@ class Interface < ActiveRecord::Base
         homepage
     end
 
+    
+
+
+
     def self.delete_profile_prompt
         puts <<-delete
          _______________________________________________________________

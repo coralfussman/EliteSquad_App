@@ -6,9 +6,10 @@ require_relative '../config/environment'
 
 Member.greeting_menu
 Member.member_homepage
-Member.clubhouses_with_members_tier
-#Clubhouse.clubhouse_member_options
-# Clubhouse.clubhouse_member_options
+
+
+#clubhouses_with_members_tier
+
 
 
 

@@ -6,20 +6,19 @@ class Interface < ActiveRecord::Base
     def self.greeting
         puts <<-Greeting
 
-                    Welcome to the Elite Squad App.   
+                 Welcome to the Elite Squad App.   
 
-            Would you like to sign in or create a new profile? 
+         Would you like to sign in or create a new profile? 
 
-            ____________________________________________________
-            |    Sign in    |    Create Profile    |    Exit    |
-            |_______________|______________________|____________|
+        ____________________________________________________
+        |    Sign in    |    Create Profile    |    Exit    |
+        |_______________|______________________|____________|
         Greeting
     end
 
     def self.sign_in_username_prompt
-        puts "                     Please enter your username."
+        puts "                 Please enter your username."
         Member.check_username
-        puts "                   Welcome, #{Member.set_user_info.name}."
     end
 
     def self.unrecognized_username
@@ -31,19 +30,19 @@ class Interface < ActiveRecord::Base
 
     def self.under_age
         puts <<-age
-        Sorry!                            
+                          Sorry!                            
         
-        You must be above 21 to use this app.   
+            You must be above 21 to use this app.   
         
         age
-        Member.thank_you_exit
+        self.thank_you_exit
     end
 
     
     def self.thank_you_exit
         puts <<-thanks
-        ___________________________________________ 
-        |  Thank you for using the Elite Squad App. |
+         ___________________________________________ 
+        |Thank you for demoing the Elite Squad App. |
         |         We hope to see you soon!          |
         |___________________________________________|
         thanks
@@ -51,16 +50,18 @@ class Interface < ActiveRecord::Base
     end
 ############################################################################################################# 
 
-####################################MEMBER ACCESS/OPTIONS INTERFACE########################################## 
+####################################MEMBER ACCESS/OPTIONS DISPLAY############################################ 
 
     def self.member_homepage_display
         puts <<-homepage
-                    This is a place holder.
-            Please type one of the following options.
-            You are currently : user_tier_placeholder.
-                Clubhouses         View Points     
-            Change Username      Delete Profile 
-                 Check In             Exit     
+                            
+                            #{Member.set_user_info.name}
+                    You are currently : #{Member.set_user_info.tier}
+                          You have #{Member.user_visits_count} points.
+
+            Please enter one of the following options.
+                      Choose Clubhouses          
+             Change Username    Delete Profile   Exit     
         homepage
     end
 
@@ -74,5 +75,5 @@ class Interface < ActiveRecord::Base
         |_______________________________________________________________|
         delete
     end
-
+########################################################################################################
 end

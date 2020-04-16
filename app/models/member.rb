@@ -8,17 +8,18 @@ class Member < ActiveRecord::Base
     def self.greeting_menu
         Interface.greeting
         loop do
-            input = gets.chomp
-            if input.downcase == "sign in"
-                Interface.sign_in_username_prompt
-                break
-            elsif input.downcase == "create profile"
-                Member.create_profile
-                break
-            elsif input.downcase == "exit"
-                Interface.thank_you_exit
-            else
-                puts "Please enter a valid option."
+            input = (gets.chomp).downcase
+            case input
+                when "sign in"
+                    Interface.sign_in_username_prompt
+                    break
+                when "create profile"
+                    Member.create_profile
+                    break
+                when "exit"
+                    Interface.thank_you_exit
+                else
+                    puts "Please enter a valid option."
             end
         end
     end
@@ -40,27 +41,6 @@ class Member < ActiveRecord::Base
         end
     end
     
-    def self.get_user_info
-        Member.find_by(id: $user_id)
-    end
-
-    def self.get_username
-        Member.get_user_info.name
-    end
-
-    def self.get_id
-        Member.get_user_info.id
-    end
-
-    def self.get_tier
-        Member.get_user_info.tier
-    end
-
-    def self.get_visit_count
-        Member.get_user_info.visits
-    end
-    
-
     def self.greeting_menu
         Interface.greeting
         input = gets.chomp
@@ -103,6 +83,12 @@ class Member < ActiveRecord::Base
         age = age.to_i
         if age >= 21
             puts "Your account has been created."
+    def self.get_user_age
+        puts "                 Please enter your age."
+        age = gets.chomp
+        age = age.to_i
+        if age >= 21
+            puts "                 Your account has been created."
         else
             Interface.under_age
         end 
@@ -116,11 +102,11 @@ class Member < ActiveRecord::Base
     end
     
     def self.create_username
-        puts "Please enter a username."
+        puts "                 Please enter a username."
         name = gets.chomp
         until !Member.get_all_usernames.include?(name)
-            puts "This username is already taken."
-            puts "Please enter a different username."
+            puts "                   This username is already taken."
+            puts "                 Please enter a different username."
             name = gets.chomp
         end
         name
@@ -133,26 +119,6 @@ class Member < ActiveRecord::Base
         $user_id = member.id
     end 
 
-    def self.delete_profile
-        Interface.delete_profile_prompt
-        loop do
-            input = (gets.chomp).downcase
-            case input
-            when "delete"
-                obj = Member.set_user_info
-                obj.destroy
-                Interface.thank_you_exit
-                break
-            when "go back"
-                Member.member_homepage
-                break
-            else
-                puts "Unrecognized entry."
-                puts "Please enter 'DELETE' or 'GO BACK'."
-            end
-        end
-    end
-
 ########################################################################################################
 ########################################USER DATA ACCESS METHODS########################################
 
@@ -160,9 +126,8 @@ class Member < ActiveRecord::Base
         Member.find_by(id: $user_id)
     end
 
-
 ########################################################################################################
-########################################USER OPTIONS METHODS########################################
+########################################USER OPTIONS METHODS############################################
 
     def self.change_username
         name = Member.create_username
@@ -171,11 +136,8 @@ class Member < ActiveRecord::Base
         Member.member_homepage
     end
 
-    def self.change_member_visits
-       current_visits = self.visits
-        Member.current_visits = 
-        puts 
-       
+    def self.user_visits_count
+        Member.set_user_info.visits
     end
 
     def self.member_homepage
@@ -203,6 +165,50 @@ class Member < ActiveRecord::Base
         end
     end
 
+    def self.delete_profile
+        Interface.delete_profile_prompt
+        loop do
+            input = (gets.chomp).downcase
+            case input
+            when "delete"
+                obj = Member.set_user_info
+                obj.destroy
+                Interface.thank_you_exit
+                break
+            when "go back"
+                Member.member_homepage
+                break
+            else
+                puts "Unrecognized entry."
+                puts "Please enter 'DELETE' or 'GO BACK'."
+            end
+        end
+    end
+
         
-   
+######################################################################################################## 
+########################################USER CLUBHOUSE METHODS##########################################
+
+    def self.clubhouses_with_members_tier
+        Clubhouse.all.select do |c|
+            # tiers 'gold' > 'silver' > 'bronze'
+            if self.tier == 'Gold'
+                puts "Here are all the clubhouses you have access to!"
+            # self.display_bronze
+            # self.display_silver
+            # puts "Plus these Premium Clubs"
+            # self.display_gold
+
+            elsif self.tier == 'Silver'
+                # self.display_bronze
+                # self.display_silver
+            else
+            
+            
+            c.tier == self.tier
+            end
+        end
+    end
+########################################################################################################
+
 end

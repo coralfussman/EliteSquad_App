@@ -56,33 +56,27 @@ class Member < ActiveRecord::Base
 
     #puts "here are all the clubhouses you have access to!"
     
-    def clubhouses_with_members_tier
-        Clubhouse.all.select do |c|
-            # tiers 'gold' > 'silver' > 'bronze'
-            if self.tier == 'gold'
+    # def clubhouses_with_members_tier
+    #     Clubhouse.all.select do |c|
+    #         # tiers 'gold' > 'silver' > 'bronze'
+    #         if self.tier == 'gold'
                 
-                c.tier == 'gold' || c.tier == 'silver' || c.tier == 'bronze'
-            # self.display_bronze
-            # self.display_silver
-            # puts "Plus these Premium Clubs"
-            # self.display_gold
+    #             c.tier == 'gold' || c.tier == 'silver' || c.tier == 'bronze'
+    #         # self.display_bronze
+    #         # self.display_silver
+    #         # puts "Plus these Premium Clubs"
+    #         # self.display_gold
 
-             elsif self.tier == 'silver'
-                c.tier == 'silver' || c.tier == 'bronze'
-                # self.display_bronze
-                # self.display_silver
-            else
-                c.tier == self.tier
-            end
-        end
-    end
+    #          elsif self.tier == 'silver'
+    #             c.tier == 'silver' || c.tier == 'bronze'
+    #             # self.display_bronze
+    #             # self.display_silver
+    #         else
+    #             c.tier == self.tier
+    #         end
+    #     end
+    # end
 
-    def self.get_user_age
-        puts "Please enter your age."
-        age = gets.chomp
-        age = age.to_i
-        if age >= 21
-            puts "Your account has been created."
     def self.get_user_age
         puts "                 Please enter your age."
         age = gets.chomp
@@ -137,7 +131,8 @@ class Member < ActiveRecord::Base
     end
 
     def self.user_visits_count
-        Member.set_user_info.visits
+        member = Member.set_user_info
+        member.visits
     end
 
     def self.member_homepage
@@ -145,22 +140,23 @@ class Member < ActiveRecord::Base
         input = (gets.chomp).downcase
         loop do
             case input
-            when "clubhouses"
-                puts "Placeholder for clubhouses list"
-                break
-            when "view points"
-                puts "Placeholder for points"
-                break
-            when "change username"
-                Member.change_username
-                break
-            when "delete profile"
-                Member.delete_profile
-                break
-            when "exit"
-                Interface.thank_you_exit
-            else
-                puts "Please enter a valid option."
+                when "clubhouses"
+                    puts "Placeholder for clubhouses list"
+                    break
+                when "view points"
+                    puts "Placeholder for points"
+                    break
+                when "change username"
+                    Member.change_username
+                    break
+                when "delete profile"
+                    Member.delete_profile
+                    break
+                when "exit"
+                    Interface.thank_you_exit
+                else
+                    puts "Please enter a valid option."
+                
             end
         end
     end
@@ -173,6 +169,7 @@ class Member < ActiveRecord::Base
             when "delete"
                 obj = Member.set_user_info
                 obj.destroy
+                puts "           Your profile was successfully deleted."
                 Interface.thank_you_exit
                 break
             when "go back"

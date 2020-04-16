@@ -57,7 +57,7 @@ class Interface < ActiveRecord::Base
                             
                             #{Member.set_user_info.name}
                     You are currently : #{Member.set_user_info.tier}
-                          You have #{Member.user_visits_count} points.
+                          You have #{Member.set_user_info.visits} points.
 
             Please enter one of the following options.
                       Choose Clubhouses          

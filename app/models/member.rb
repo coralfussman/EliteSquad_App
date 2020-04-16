@@ -143,8 +143,9 @@ class Member < ActiveRecord::Base
                 when "clubhouses"
                     puts "Placeholder for clubhouses list"
                     break
-                when "view points"
-                    puts "Placeholder for points"
+                when "view history"
+                    puts "Placeholder for record of clubhouse visits"
+                    Member.member_homepage
                     break
                 when "change username"
                     Member.change_username
@@ -186,26 +187,26 @@ class Member < ActiveRecord::Base
 ######################################################################################################## 
 ########################################USER CLUBHOUSE METHODS##########################################
 
-    def self.clubhouses_with_members_tier
-        Clubhouse.all.select do |c|
-            # tiers 'gold' > 'silver' > 'bronze'
-            if self.tier == 'Gold'
-                puts "Here are all the clubhouses you have access to!"
-            # self.display_bronze
-            # self.display_silver
-            # puts "Plus these Premium Clubs"
-            # self.display_gold
+    # def self.clubhouses_with_members_tier
+    #     Clubhouse.all.select do |c|
+    #         # tiers 'gold' > 'silver' > 'bronze'
+    #         if self.tier == 'Gold'
+    #             puts "Here are all the clubhouses you have access to!"
+    #         # self.display_bronze
+    #         # self.display_silver
+    #         # puts "Plus these Premium Clubs"
+    #         # self.display_gold
 
-            elsif self.tier == 'Silver'
-                # self.display_bronze
-                # self.display_silver
-            else
+    #         elsif self.tier == 'Silver'
+    #             # self.display_bronze
+    #             # self.display_silver
+    #         else
             
             
-            c.tier == self.tier
-            end
-        end
-    end
+    #         c.tier == self.tier
+    #         end
+    #     end
+    # end
 ########################################################################################################
 
 end

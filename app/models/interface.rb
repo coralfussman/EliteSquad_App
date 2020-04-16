@@ -8,8 +8,6 @@ class Interface < ActiveRecord::Base
 
                  Welcome to the Elite Squad App.   
 
-         Would you like to sign in or create a new profile? 
-
         ____________________________________________________
         |    Sign in    |    Create Profile    |    Exit    |
         |_______________|______________________|____________|
@@ -17,7 +15,7 @@ class Interface < ActiveRecord::Base
     end
 
     def self.sign_in_username_prompt
-        puts "                 Please enter your username."
+        puts "                    Please enter your username."
         Member.check_username
     end
 
@@ -41,10 +39,10 @@ class Interface < ActiveRecord::Base
     
     def self.thank_you_exit
         puts <<-thanks
-         ___________________________________________ 
-        |Thank you for demoing the Elite Squad App. |
-        |         We hope to see you soon!          |
-        |___________________________________________|
+             ___________________________________________ 
+            |Thank you for demoing the Elite Squad App. |
+            |         We hope to see you soon!          |
+            |___________________________________________|
         thanks
         exit
     end
@@ -55,13 +53,16 @@ class Interface < ActiveRecord::Base
     def self.member_homepage_display
         puts <<-homepage
                             
-                            #{Member.set_user_info.name}
-                    You are currently : #{Member.set_user_info.tier}
-                          You have #{Member.set_user_info.visits} points.
-
-            Please enter one of the following options.
-                      Choose Clubhouses          
-             Change Username    Delete Profile   Exit     
+                                #{Member.set_user_info.name}
+                      You are currently : #{Member.set_user_info.tier}
+                         You have #{Member.user_visits_count} points.
+             ___________________________________________
+            |Please enter one of the following options: |
+            |                                           |
+            |     Choose Clubhouses   View History      |
+            |                                           |      
+            | Change Username    Delete Profile   Exit  |
+            |___________________________________________|  
         homepage
     end
 

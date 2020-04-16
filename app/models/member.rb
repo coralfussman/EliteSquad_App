@@ -54,7 +54,28 @@ class Member < ActiveRecord::Base
             Interface.thank_you_exit
         end
     end
-    
+
+    def self.clubhouses_with_members_tier
+        Clubhouse.all.select do |c|
+            # tiers 'gold' > 'silver' > 'bronze'
+            if self.tier == 'gold'
+                puts "here are all the clubhouses you have access to!"
+            # self.display_bronze
+            # self.display_silver
+            # puts "Plus these Premium Clubs"
+            # self.display_gold
+
+             elsif self.tier == 'silver'
+                # self.display_bronze
+                # self.display_silver
+            else
+            
+            
+            c.tier == self.tier
+            end
+        end
+    end
+
     def self.get_user_age
         puts "Please enter your age."
         @age = gets.chomp

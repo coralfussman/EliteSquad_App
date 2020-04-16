@@ -34,7 +34,6 @@ class Member < ActiveRecord::Base
         end
     end
     
-<<<<<<< HEAD
     def self.get_user_info
         Member.find_by(id: $user_id)
     end
@@ -69,7 +68,7 @@ class Member < ActiveRecord::Base
     end
 
     def self.clubhouses_with_members_tier
-        Clubhouse.all.select do |c|
+       clubhouses = Clubhouse.all.select do |club|
             # tiers 'gold' > 'silver' > 'bronze'
             if self.tier == 'gold'
                 puts "here are all the clubhouses you have access to!"
@@ -84,13 +83,11 @@ class Member < ActiveRecord::Base
             else
             
             
-            c.tier == self.tier
+            club.tier == 'bronze'
             end
         end
     end
 
-=======
->>>>>>> 1fd8533047e39864c7f521fe3198051bbd02b73b
     def self.get_user_age
         puts "Please enter your age."
         @age = gets.chomp

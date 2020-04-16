@@ -1,9 +1,21 @@
 # EliteSquad-README
 
-The ELITE SQUAD App helps clubs recruit members with similar values.  approves a guest's membership based on their credentials, and then upgrades their ranking based on logged social events. 
+The ELITE SQUAD App helps users discover clubs they have access to. As a user visits the clubs he/ or she has Access to more than 10 times, they Level Up and unlock more clubs with even greater ammenities. 
+
+Upon Running the app members will be prompted to choose whether or not they would like to sign in or create a new account.
 
 
-Members can create an account with Elite Squad. They can then view all events available to them to attend.  clubhouse. After approval their clubhouse participation is tracked 
+        Welcome to the Elite Squad App.          
+        Would you like to sign in or create a new profile? 
+        ____________________________________________________
+        |    Sign in    |    Create Profile    |    Exit    |
+        |_______________|______________________|____________|
+   
+Once logged in you will be shown all the clubs available to your current tier.
+If you attend at least 10 events (limit 2 per day) you will level up! your tier and unlock more clubhouses with even greatre ammenities!
+
+
+
 
 
 

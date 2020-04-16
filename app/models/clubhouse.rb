@@ -85,40 +85,5 @@ class Clubhouse < ActiveRecord::Base
         #     c.tier == member.tier
         # end
 
-
-    
-
-
-
-        # if Member.all.find include?(name: user_input) && self.name.include?(tier: "bronze")
-
-        #     puts self.display_bronze
-        # #otherwise if record includes
-        # elsif self.name.include?(name: user_input) && self.name.include?(tier: "silver")
-
-        #     puts self.display_bronze
-        #          self.display_silver
-
-            
-        # @tier = gets.chomp
-        # if    @tier == "bronze"
-        #     self.display_bronze
-        # elsif @tier == "silver"         
-        #     self.display_bronze
-            
-        #     self.display_silver
-
-#         elsif @tier == "gold"
-#             puts "here are all the clubhouses you have access to!"
-#             self.display_bronze
-#             self.display_silver
-#             puts "Plus these Premium Clubs"
-#             self.display_gold
-#         else
-#            # break
-                
-#         end
- 
-#     end
-# #end
+        
 end

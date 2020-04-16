@@ -40,6 +40,60 @@ class Member < ActiveRecord::Base
         end
     end
     
+    def self.get_user_info
+        Member.find_by(id: $user_id)
+    end
+
+    def self.get_username
+        Member.get_user_info.name
+    end
+
+    def self.get_id
+        Member.get_user_info.id
+    end
+
+    def self.get_tier
+        Member.get_user_info.tier
+    end
+
+    def self.get_visit_count
+        Member.get_user_info.visits
+    end
+    
+
+    def self.greeting_menu
+        Interface.greeting
+        input = gets.chomp
+        if input.downcase == "sign in"
+            Interface.sign_in_username_prompt
+        elsif input.downcase == "create profile"
+            Member.create_profile
+        elsif input.downcase == "exit"
+            Interface.thank_you_exit
+        end
+    end
+
+    def self.clubhouses_with_members_tier
+        Clubhouse.all.select do |c|
+            # tiers 'gold' > 'silver' > 'bronze'
+            if self.tier == 'gold'
+                puts "here are all the clubhouses you have access to!"
+            # self.display_bronze
+            # self.display_silver
+            # puts "Plus these Premium Clubs"
+            # self.display_gold
+
+             elsif self.tier == 'silver'
+                # self.display_bronze
+                # self.display_silver
+            else
+            
+            
+            c.tier == self.tier
+            end
+        end
+    end
+
     def self.get_user_age
         puts "Please enter your age."
         @age = gets.chomp

@@ -6,6 +6,7 @@ class Clubhouse < ActiveRecord::Base
 
 
 
+<<<<<<< HEAD
         def self.display_bronze
             puts  <<-BRONZE
                 Here are the Bronze Clubs Available to you!
@@ -22,6 +23,23 @@ class Clubhouse < ActiveRecord::Base
             display_clubhouse.name
             end 
             puts bronze_club_name_array
+=======
+    def self.display_bronze
+        puts  <<-BRONZE
+            Here are the Bronze Clubs Available to you!
+
+            ██████╗ ██████╗  ██████╗ ███╗   ██╗███████╗███████╗     ██████╗██╗     ██╗   ██╗██████╗ ███████╗
+            ██╔══██╗██╔══██╗██╔═══██╗████╗  ██║╚══███╔╝██╔════╝    ██╔════╝██║     ██║   ██║██╔══██╗██╔════╝
+            ██████╔╝██████╔╝██║   ██║██╔██╗ ██║  ███╔╝ █████╗      ██║     ██║     ██║   ██║██████╔╝███████╗
+            ██╔══██╗██╔══██╗██║   ██║██║╚██╗██║ ███╔╝  ██╔══╝      ██║     ██║     ██║   ██║██╔══██╗╚════██║
+            ██████╔╝██║  ██║╚██████╔╝██║ ╚████║███████╗███████╗    ╚██████╗███████╗╚██████╔╝██████╔╝███████║
+            ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚══════╝     ╚═════╝╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝
+                                                                                                            
+        BRONZE
+
+        bronze_club_array = Clubhouse.all.select do |clubhouse|
+            clubhouse.tier == "bronze"
+>>>>>>> 1fd8533047e39864c7f521fe3198051bbd02b73b
         end
 
 

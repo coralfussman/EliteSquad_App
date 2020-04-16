@@ -140,8 +140,8 @@ class Member < ActiveRecord::Base
         input = (gets.chomp).downcase
         loop do
             case input
-                when "clubhouses"
-                    puts "Placeholder for clubhouses list"
+                when "choose clubhouses"
+                    Clubhouse.choose_clubhouse_prompt
                     break
                 when "view history"
                     puts "Placeholder for record of clubhouse visits"
@@ -187,26 +187,7 @@ class Member < ActiveRecord::Base
 ######################################################################################################## 
 ########################################USER CLUBHOUSE METHODS##########################################
 
-    # def self.clubhouses_with_members_tier
-    #     Clubhouse.all.select do |c|
-    #         # tiers 'gold' > 'silver' > 'bronze'
-    #         if self.tier == 'Gold'
-    #             puts "Here are all the clubhouses you have access to!"
-    #         # self.display_bronze
-    #         # self.display_silver
-    #         # puts "Plus these Premium Clubs"
-    #         # self.display_gold
-
-    #         elsif self.tier == 'Silver'
-    #             # self.display_bronze
-    #             # self.display_silver
-    #         else
-            
-            
-    #         c.tier == self.tier
-    #         end
-    #     end
-    # end
+    
 ########################################################################################################
 
 end

@@ -1,6 +1,6 @@
 class Clubhouse < ActiveRecord::Base
     has_many :records
-    has_many :members, through: :record
+    has_many :members, through: :records
 
 
         def self.display_bronze

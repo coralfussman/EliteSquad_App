@@ -4,9 +4,9 @@ require_relative '../config/environment'
 # name = gets.chomp
 # puts "Hi #{name}. Welcome to EliteSquad! Here you will find many different clubhouses, each with various activities and amenities that you may find of interest."
 
-Member.greeting_menu
+greeting_menu
 
-Clubhouse.clubhouse_member_options
+# Clubhouse.clubhouse_member_options
 
 
 

@@ -1,6 +1,6 @@
 class Clubhouse < ActiveRecord::Base
-    belongs_to :records
-    has_many :member, through: :records
+    belongs_to :record
+    has_many :members, through: :record
 
 
 
@@ -18,7 +18,7 @@ class Clubhouse < ActiveRecord::Base
             ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚══════╝     ╚═════╝╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝
                                                                                                             
         BRONZE
-        
+
         bronze_club_array = Clubhouse.all.select do |clubhouse|
             clubhouse.tier == "bronze"
         end

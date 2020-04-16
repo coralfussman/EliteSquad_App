@@ -164,9 +164,10 @@ class Member < ActiveRecord::Base
 ########################################USER OPTIONS METHODS########################################
 
     def self.change_username
-        Member.set_user_info.name = Member.create_username
-        Member.update({})
-        
+        name = Member.create_username
+        Member.set_user_info.update(name: name)
+        puts "Username successfully changed."
+        Member.member_homepage
     end
 
     def self.member_homepage

@@ -19,6 +19,7 @@ class Clubhouse < ActiveRecord::Base
             display_clubhouse.name
             end 
             puts bronze_club_name_array
+        end
 
     def self.display_bronze
         puts  <<-BRONZE
@@ -37,6 +38,7 @@ class Clubhouse < ActiveRecord::Base
             clubhouse.tier == "bronze"
 
         end
+    end
 
 
         def self.display_silver

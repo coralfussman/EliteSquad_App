@@ -139,7 +139,7 @@ class Interface < ActiveRecord::Base
     end
     
     def self.return_to_menu
-        #puts "To continue please select from the following: Main Menu or Exit "
+        
     while 
         input = (gets.chomp).downcase
         case input

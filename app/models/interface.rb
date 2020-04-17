@@ -38,7 +38,7 @@ class Interface < ActiveRecord::Base
             ________________________________________________________
             / \                                                       \.
             |   |                                                      |.
-            \_ |           Welcome to the Elite Squad App.             |.
+            \_ ..|           Welcome to the Elite Squad App.            |.
                 |  Would you like to sign in or create a new profile?  |.
                 |                                                      |.
                 |______________________________________________________|
@@ -146,7 +146,6 @@ class Interface < ActiveRecord::Base
             when "Main Menu"
              Interface.member_homepage_display
              break
-
 
             else "Exit"
                 Interface.thank_you_exit

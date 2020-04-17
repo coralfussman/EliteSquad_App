@@ -176,24 +176,50 @@ class Member < ActiveRecord::Base
 ######################################################################################################## 
 ########################################USER CLUBHOUSE METHODS##########################################
 
-     def self.getting_clubs_matching_members
-        Clubhouse.all.select do |c|
+    def self.getting_clubs_matching_members
+        #returns an array of all the clubhouses for a gold, silver, or bronze member
+         
             # tiers 'gold' > 'silver' > 'bronze'
             if Member.set_user_info.tier == 'gold'
-                
-                c.tier == 'gold' || c.tier == 'silver' || c.tier == 'bronze'
-
-                member.getting_clubs_matching_members.all.each do |c|
-                    puts "#{c.name}-#{c.tier}"
-
-             elsif Member.set_user_info.tier == 'silver'
-                c.tier == 'silver' || c.tier == 'bronze'
+                    clubhouses = Clubhouse.all.select do |club|
             
-            else
-                c.tier == Member.set_user_info.tier
+                club.tier == 'gold' ||  club.tier == 'silver' || club.tier == 'bronze'
+
+
+                
+                    end
+                
+                    # getting_clubs_matching_members.each do |club|
+                    #     puts "#{club.name}-#{club.tier}"
+
+                    #end
+
+                elsif Member.set_user_info.tier == 'silver'
+                    clubhouses = Clubhouse.all.select do |club|
+                        club.tier == 'silver' || club.tier == 'bronze'
+                    end
+                else
+                    
+                    clubhouses = Clubhouse.all.select do |club|
+                        club.tier == Member.set_user_info.tier
+                    end
+
+
+                
+                end
+                clubhouses.each do |club|
+                puts "#{club.name}-#{club.tier}"
             end
-        end
+        
     end
+# def self.getting_club_name_tier
+
+#     getting_clubs_matching_members.each do |club|
+#         puts "#{club.name}-#{club.tier}"
+
+# end
+# end
+
 ########################################################################################################
 
 end

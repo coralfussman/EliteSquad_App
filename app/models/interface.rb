@@ -67,29 +67,20 @@ class Interface < ActiveRecord::Base
     end
 
 
- def self.sign_in_username_prompt
-        puts "                 Please enter your username."
-        Member.check_username
-    end
-
     def self.choose_clubhouse_prompt
-        Member.getting_clubs_matching_members
-        loop do 
-        user_club_choice = gets.chomp 
-            if user_club_choice.downcase == 'Choose Clubhouses' 
-        puts "here are all the clubhouses you have access to!"
+      
+        #loop do 
+    
 
+         puts "here are all the clubhouses you have access to!"
+        Member.getting_clubs_matching_members
        
 
         puts "                 Please enter the clubhouse you'd like to visit"
-        Clubhouse.check_clubhouse
+               
+                Clubhouse.check_clubhouse
 
-        puts "Great! You are checked in"
-            
-            else
-                puts "Sorry, invalid choice, please choose from the previous options"
-            end
-        end
+       
     end
 
 

@@ -8,11 +8,15 @@ class Clubhouse < ActiveRecord::Base
     def self.check_clubhouse
 
         
-            user_choice = (gets.chomp).downcase 
+            user_choice = gets.chomp
             if Clubhouse.find_by(name: user_choice)
-                new_count = Member.set_user_info.visit
+                new_count = Member.set_user_info.visits
                 new_count += 1
-                Member.set_user_info.update(id: new_count)
+                Member.set_user_info.update(visits: new_count)
+
+            puts "Great! You are checked in"
+
+            else puts "Sorry, invalid choice, please choose from the previous options"
             end
         
     end

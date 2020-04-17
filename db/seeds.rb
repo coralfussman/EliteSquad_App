@@ -1,5 +1,13 @@
 Clubhouse.create(name: "Raquet Club", tier: "gold")
+Clubhouse.create(name: "Yacht Club", tier: "gold")
+Clubhouse.create(name: "VR League", tier: "gold")
+Clubhouse.create(name: "Painting Studio", tier: "silver")
+Clubhouse.create(name: "Coworking Club", tier: "silver")
+Clubhouse.create(name: "Water Polo", tier: "silver")
 Clubhouse.create(name: "Bowling Alley", tier: "bronze")
+Clubhouse.create(name: "Book Club", tier: "bronze")
+Clubhouse.create(name: "Dodgeball", tier: "bronze")
+Clubhouse.create(name: "Comic Club", tier: "bronze")
 
 Member.create(name: "Mike", age:26, tier: "gold", visits: 15)
 Member.create(name: "Sally", age:24, tier: "bronze", visits: 2)

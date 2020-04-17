@@ -7,7 +7,7 @@ class Member < ActiveRecord::Base
 
     def self.greeting_menu
         Interface.greeting
-        loop do
+        while 
             input = (gets.chomp).downcase
             case input
                 when "sign in"
@@ -42,17 +42,17 @@ class Member < ActiveRecord::Base
         end
     end
     
-    def self.greeting_menu
-        Interface.greeting
-        input = gets.chomp
-        if input.downcase == "sign in"
-            Interface.sign_in_username_prompt
-        elsif input.downcase == "create profile"
-            Member.create_profile
-        elsif input.downcase == "exit"
-            Interface.thank_you_exit
-        end
-    end
+    # def self.greeting_menu
+    #     Interface.greeting
+    #     input = gets.chomp
+    #     if input.downcase == "sign in"
+    #         Interface.sign_in_username_prompt
+    #     elsif input.downcase == "create profile"
+    #         Member.create_profile
+    #     elsif input.downcase == "exit"
+    #         Interface.thank_you_exit
+    #     end
+    # end
   
 
 
@@ -127,7 +127,7 @@ class Member < ActiveRecord::Base
     def self.member_homepage
         Interface.member_homepage_display
         input = (gets.chomp).downcase
-        loop do
+        while
             case input
                 when "choose clubhouse"
                     Interface.choose_clubhouse_prompt
@@ -153,8 +153,8 @@ class Member < ActiveRecord::Base
 
     def self.delete_profile
         Interface.delete_profile_prompt
-        loop do
-            input = (gets.chomp).downcase
+        
+        while input = (gets.chomp).downcase
             case input
             when "delete"
                 obj = Member.set_user_info

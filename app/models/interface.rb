@@ -2,7 +2,7 @@ require 'pry'
 class Interface < ActiveRecord::Base
 
 
-###################################SIGN IN/CREATE PROFILE/EXIT DISPLAY#######################################
+  ###################################SIGN IN/CREATE PROFILE/EXIT DISPLAY#######################################
     def self.greeting
         puts <<-Greeting
 
@@ -38,7 +38,7 @@ class Interface < ActiveRecord::Base
             ________________________________________________________
             / \                                                       \.
             |   |                                                      |.
-            \_ |           Welcome to the Elite Squad App.            |.
+            \_ |           Welcome to the Elite Squad App.             |.
                 |  Would you like to sign in or create a new profile?  |.
                 |                                                      |.
                 |______________________________________________________|
@@ -90,9 +90,9 @@ class Interface < ActiveRecord::Base
         thanks
         exit
     end
-############################################################################################################# 
+ ############################################################################################################# 
 
-####################################MEMBER ACCESS/OPTIONS DISPLAY############################################ 
+ ####################################MEMBER ACCESS/OPTIONS DISPLAY############################################ 
 
     def self.member_homepage_display
         puts <<-homepage
@@ -135,14 +135,29 @@ class Interface < ActiveRecord::Base
         puts "                 Please enter the clubhouse you'd like to visit"
                
                 Clubhouse.check_clubhouse
-
-       
+         
     end
+    
+    def self.return_to_menu
+        #puts "To continue please select from the following: Main Menu or Exit "
+    while 
+        input = (gets.chomp).downcase
+        case input
+            when "Main Menu"
+             Interface.member_homepage_display
+             break
 
 
-
-
-   
+            else "Exit"
+                Interface.thank_you_exit
+                break 
+                
+                
+            end
+            home
+        end
+    end
+    
     
 
     def self.delete_profile_prompt

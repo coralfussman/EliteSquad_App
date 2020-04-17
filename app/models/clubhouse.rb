@@ -15,6 +15,7 @@ class Clubhouse < ActiveRecord::Base
                 Member.set_user_info.update(visits: new_count)
 
             puts "Great! You are checked in"
+            puts "please Type Main Menu or Exit"
 
             else puts "Sorry, invalid choice, please choose from the previous options"
             end

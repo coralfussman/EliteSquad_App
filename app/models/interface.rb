@@ -6,13 +6,54 @@ class Interface < ActiveRecord::Base
     def self.greeting
         puts <<-Greeting
 
-                 Welcome to the Elite Squad App.   
+                
 
-         Would you like to sign in or create a new profile? 
+                
+                _________
+                |MMMMMMMMM|                _
+        ________    |MMMMMMMMM|              _|l|_
+        |!!!!!!!_|___|MMMMMMMMM|             |lllll|
+        |!!!!!!|=========|MMMMM|             |lllll|_______
+        |!!!!!!|=========|MMMMM|            _|lllll|HHHHHHH|
+        |!!!!!!|=========|MMMMM|   ________|lllllllll|HHHHH|
+        |!!!!!!|=========|MMMMM|  |unununun|lllllllll|HHHHH|______
+        |!!!!!!|=========|MMMMM|  |nunununu|lllllllll|HH|:::::::::|
+        |!!!!!!|=========|MMM__|..|un__unun|lllllllll|HH|:::::::::|
+        |!!!!!!|=======_=|M_( ')' );' .)unu|lllllllll|HH|:::::::::|
+        |!!!_!!|======( )|(. ` ,) (_ ', )un|lllllllll|HH|:::::::::| ~~~
+        |!!(.)!|===__(`.')_(_ ')_,)(. _)unu|lllllllll|HH|:__::::::|~~  ~~
+        |!(.`')|==( .)' .)MMM|M|| |un|nunun|lllllllll|``|( ,)_::::| ~~~~ ~
+        -(: _)|=(`. ')_)|---|- '  ``|`````|lll____ll|  (_; `'):::|~~~  ~~~
+        |  |==(_'_)|=|    ______        ''/\   \'   |(_'_)::::|\~~~~__|)__
+        |   ''''|''o/`.-``~~~~~ ``-.     /--\___\    ``|`````` /____\____/
+        jrei        |  h ( `; ~~~ ~~  ~ )    |M_|#_#|      ' --   __________|~
+        --   *      '-.._~~__~..-'   --           -* -     /  ~~~~ ~~~~~~
+        *   -   -      --           ----         ---         _.-'~~~~~     ~ ~~
+        __--_________............-------------'''''''''''''''` ~~~~~    ~~~ ~~~~
+        ~~    ~~~~~~~~     ~~~~~~~   ~~~~~~~~~   ~~~~~~~~~~      ~~~~~~~     ~~~
+        ~~~~~~~~~  ~~~~  ~~~~~ ~~~~~~~~~ ~ ~      ~~~~~~ ~~~~~~     ~~~~    ~~~~
+        ~~~~~~~~     ~~~~~~~~~~~~~~~        ~~~~~~~~~~~~ ~~~~~~  ~~~ ~~~~~~  ~~~
 
-        ____________________________________________________
-        |    Sign in    |    Create Profile    |    Exit    |
-        |_______________|______________________|____________|
+
+            ________________________________________________________
+            / \                                                       \.
+            |   |                                                      |.
+            \_ |           Welcome to the Elite Squad App.            |.
+                |  Would you like to sign in or create a new profile?  |.
+                |                                                      |.
+                |______________________________________________________|
+                |               +                      +               |.
+                |    Sign in    +    Create Profile    +    Exit       |.
+                |               +                      +               |.
+                |_______________+______________________+_______________|. 
+                |                                                      |.
+                |                                                      |.
+                |                                                      |.
+                |                                                      |.
+                |   ___________________________________________________|____
+                |  /                                                     /.
+                \_/_____________________________________________________/.
+    
         Greeting
     end
 
@@ -55,14 +96,29 @@ class Interface < ActiveRecord::Base
 
     def self.member_homepage_display
         puts <<-homepage
-                            
-                            #{Member.set_user_info.name}
-                    You are currently : #{Member.set_user_info.tier}
-                          You have #{Member.user_visits_count} points.
+                      
 
-            Please enter one of the following options.
-                      Choose Clubhouses          
-             Change Username    Delete Profile   Exit     
+                                             #{Member.set_user_info.name}
+                                   You are currently : #{Member.set_user_info.tier}
+                                   You have #{Member.user_visits_count} points.
+                                 
+                            
+                      <*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*>
+                            ------------------------------------------------
+                            |                                                |
+                            |  Please enter one of the following options.    |
+                            |                                                |
+                            |                                                |
+                            |               Choose Clubhouse                 |
+                            |               +--------------+                 |
+                            |                                                |
+                            |  Change Username     Delete Profile      Exit  |
+                            |  +-------------+     +------------+      +--+  |
+                            |                                                |
+                            ----------------------------------------------
+                          
+                      <*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*>
+                                
         homepage
     end
 

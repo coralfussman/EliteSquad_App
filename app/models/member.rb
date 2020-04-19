@@ -61,7 +61,7 @@ class Member < ActiveRecord::Base
         age = gets.chomp
         age = age.to_i
         if age >= 21
-            puts "Your account has been created."
+            puts "Your account has been created. Time to have some fun!"
 
         end
     end
@@ -71,7 +71,7 @@ class Member < ActiveRecord::Base
         age = gets.chomp
         age = age.to_i
         if age >= 21
-            puts "                 Your account has been created."
+            puts "                 Your account has been created. Time to have some fun!"
         else
             Interface.under_age
         end 
@@ -211,6 +211,8 @@ class Member < ActiveRecord::Base
                 ╚██████╔╝╚██████╔╝███████╗██████╔╝    ╚██████╗███████╗╚██████╔╝██████╔╝███████║
                 ╚═════╝  ╚═════╝ ╚══════╝╚═════╝      ╚═════╝╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝
                 ------------------------------------------------------------------------------
+
+                
 
 
             GOLD

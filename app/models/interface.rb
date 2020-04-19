@@ -74,7 +74,14 @@ class Interface < ActiveRecord::Base
         puts <<-age
                           Sorry!                            
         
-            You must be above 21 to use this app.   
+            You must be above 21 to use this app.  
+            
+            ,=""=,
+            c , _,{
+            /\  @ )                 __
+           /  ^~~^\          <=.,__/ '}=
+          (_/ ,, ,,)          \_ _>_/~
+           ~\_(/-\)'-,_,_,_,-'(_)-(_)  
         
         age
         self.thank_you_exit
@@ -135,27 +142,15 @@ class Interface < ActiveRecord::Base
         puts "                 Please enter the clubhouse you'd like to visit"
                
                 Clubhouse.check_clubhouse
+                Interface.member_homepage_display
          
     end
     
-    def self.return_to_menu
+   
         
-    while 
-        input = (gets.chomp).downcase
-        case input
-            when "Main Menu"
-             Interface.member_homepage_display
-             break
-
-            else "Exit"
-                Interface.thank_you_exit
-                break 
-                
-                
-            end
-            home
-        end
-    end
+           
+             
+   
     
     
 

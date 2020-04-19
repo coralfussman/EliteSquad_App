@@ -14,8 +14,21 @@ class Clubhouse < ActiveRecord::Base
                 new_count += 1
                 Member.set_user_info.update(visits: new_count)
 
-            puts "Great! You are checked in"
-            puts "To continue please select from the following: Main Menu or Exit "
+            puts <<-CHECKIN
+            
+            Great! You are checked in! 
+
+            GO ENJOY ALL THE AMAZING AMENITIES THIS CLUB HAS TO OFFER
+
+                                .  o ..                  
+                                o . o o.o                
+                                    ...oo               
+                                        __[]__            
+                                    __|_o_o_o\__         
+                                    \""""""""""/         
+                                     \. ..  . /          
+                                ^^^^^^^^^^^^^^^^^^^^  
+     CHECKIN
 
             else puts "Sorry, invalid choice, please choose from the previous options"
             end
